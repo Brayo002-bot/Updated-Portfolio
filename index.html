@@ -1,0 +1,769 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Brian Odhiambo | Portfolio</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    body { font-family: 'Inter', sans-serif; }
+
+    /* Floating shapes */
+    .floating-shape {
+      position: absolute;
+      opacity: 0.3;
+      animation: float 8s infinite ease-in-out alternate;
+    }
+    @keyframes float {
+      0% { transform: translateY(0) translateX(0) rotate(0deg); }
+      50% { transform: translateY(-20px) translateX(15px) rotate(45deg); }
+      100% { transform: translateY(0) translateX(0) rotate(0deg); }
+    }
+
+    /* Skills animation */
+    .skill-bar { height: 8px; border-radius: 4px; width: 0; transition: width 1s ease-in-out; }
+
+    /* Sticky Navbar */
+    .navbar {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+    }
+    /* Mobile menu styles */
+    .mobile-menu {
+      display: none; /* Hidden by default */
+    }
+    .mobile-menu.active {
+      display: block; /* Shown when active */
+    }
+  </style>
+</head>
+<body class="bg-gray-100 text-gray-800 relative overflow-x-hidden">
+
+  <!-- Floating particles container -->
+  <div id="particles-container" class="absolute inset-0 -z-10 overflow-hidden"></div>
+
+  <!-- Navbar -->
+  <nav class="navbar bg-white shadow-lg">
+    <div class="max-w-6xl mx-auto px-4">
+      <div class="flex justify-between items-center h-16">
+        <div class="flex items-center">
+          <a href="#" class="text-2xl font-bold text-blue-600">Aruah Brian</a>
+        </div>
+        <!-- Desktop Menu -->
+        <div class="hidden md:flex items-center space-x-6">
+          <a href="#about" class="text-gray-600 hover:text-blue-600 transition">About</a>
+          <a href="#skills" class="text-gray-600 hover:text-blue-600 transition">Skills</a>
+          <a href="#experience" class="text-gray-600 hover:text-blue-600 transition">Experience</a>
+          <a href="#projects" class="text-gray-600 hover:text-blue-600 transition">Projects</a>
+          <a href="#testimonials" class="text-gray-600 hover:text-blue-600 transition">Testimonials</a>
+          <a href="#contact" class="text-gray-600 hover:text-blue-600 transition">Contact</a>
+        </div>
+        <!-- Mobile Menu Button -->
+        <div class="md:hidden flex items-center">
+          <button id="mobileMenuButton" class="outline-none mobile-menu-button">
+            <svg class="w-6 h-6 text-gray-600 hover:text-blue-600"
+              fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor">
+              <path d="M4 6h16M4 12h16M4 18h16"></path>
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+    <!-- Mobile Menu -->
+    <div id="mobileMenu" class="mobile-menu md:hidden bg-white shadow-lg">
+      <a href="#about" class="block py-2 px-4 text-sm hover:bg-gray-200">About</a>
+      <a href="#skills" class="block py-2 px-4 text-sm hover:bg-gray-200">Skills</a>
+      <a href="#experience" class="block py-2 px-4 text-sm hover:bg-gray-200">Experience</a>
+      <a href="#projects" class="block py-2 px-4 text-sm hover:bg-gray-200">Projects</a>
+      <a href="#testimonials" class="block py-2 px-4 text-sm hover:bg-gray-200">Testimonials</a>
+      <a href="#contact" class="block py-2 px-4 text-sm hover:bg-gray-200">Contact</a>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="bg-blue-600 text-white min-h-screen flex flex-col justify-center items-center text-center px-4 relative z-10">
+    <img src="images/owner1.jpeg" alt="Profile Image" class="w-40 h-40 rounded-full border-4 border-white mb-4">
+    <h1 class="text-4xl font-bold mb-2">Hi, I'm Aruah Brian Odhiambo</h1>
+    <p class="text-xl mb-4">Full Stack Developer | Tech Enthusiast | Problem Solver</p>
+    <p class="max-w-xl mx-auto text-lg mb-6">I specialize in creating robust and scalable web applications from the ground up, with a focus on modern technologies and user-centric design.</p>
+    <button id="downloadCV" class="bg-white text-blue-600 font-bold px-6 py-3 rounded hover:bg-gray-100 transition">Download CV</button>
+  </section>
+
+  <!-- About Section -->
+<section id="about" class="max-w-6xl mx-auto px-4 py-16">
+  <h2 class="text-3xl font-bold mb-6 text-center">About Me</h2>
+  <div class="grid md:grid-cols-2 gap-8 items-center">
+    <div class="text-gray-700 leading-relaxed">
+      <p class="mb-4">
+        I’m a fourth-year <strong>Bachelor of Business Information Technology (BBIT)</strong> student at <strong>Jomo Kenyatta University of Agriculture and Technology (JKUAT)</strong>, passionate about merging business strategy with innovative technology solutions.
+      </p>
+      <p class="mb-4">
+        Over the years, I’ve developed a strong skill set in <strong>Full Stack Development</strong>, working with tools like <strong>React</strong>, <strong>Tailwind CSS</strong>, <strong>Node.js</strong>, <strong>Express</strong>, and databases including <strong>MySQL</strong> and <strong>MongoDB</strong>. I enjoy building user-friendly, responsive, and impactful digital products that solve real-world problems.
+      </p>
+      <p class="mb-4">
+        My interests span from designing modern, intuitive interfaces to crafting efficient backend systems that ensure seamless performance. I’m constantly exploring emerging technologies and refining my skills to stay ahead in the tech space.
+      </p>
+      <p>
+        Beyond coding, I’m passionate about learning, collaborating on innovative projects, and contributing to solutions that make a difference. I believe in continuous growth, creativity, and the power of technology to transform lives.
+      </p>
+    </div>
+    <div class="flex justify-center">
+      <!-- Replace 'myphoto.jpg' with your actual photo file -->
+      <img src="images/fullstack.jpg" alt="about me" class="rounded-lg shadow-lg max-w-xs">
+    </div>
+  </div>
+</section>
+
+  <hr class="max-w-6xl mx-auto my-8 border-gray-300">
+
+  <!-- Skills Section -->
+  <section id="skills" class="bg-white py-16">
+    <div class="max-w-6xl mx-auto px-4">
+      <h2 class="text-3xl font-bold mb-8 text-center">Skills</h2>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-3xl mx-auto">
+  <div>
+    <h3 class="font-semibold mb-1">HTML & CSS</h3>
+    <div class="bg-gray-300 skill-bar-container w-full mb-4">
+      <div class="bg-blue-600 skill-bar" data-skill="90"></div>
+    </div>
+  </div>
+  <div>
+    <h3 class="font-semibold mb-1">JavaScript</h3>
+    <div class="bg-gray-300 skill-bar-container w-full mb-4">
+      <div class="bg-blue-600 skill-bar" data-skill="85"></div>
+    </div>
+  </div>
+  <div>
+    <h3 class="font-semibold mb-1">React & Vue.js</h3>
+    <div class="bg-gray-300 skill-bar-container w-full mb-4">
+      <div class="bg-blue-600 skill-bar" data-skill="80"></div>
+    </div>
+  </div>
+  <div>
+    <h3 class="font-semibold mb-1">Node.js & Express</h3>
+    <div class="bg-gray-300 skill-bar-container w-full mb-4">
+      <div class="bg-blue-600 skill-bar" data-skill="75"></div>
+    </div>
+  </div>
+  <div>
+    <h3 class="font-semibold mb-1">Databases (MongoDB, SQL)</h3>
+    <div class="bg-gray-300 skill-bar-container w-full mb-4">
+      <div class="bg-blue-600 skill-bar" data-skill="70"></div>
+    </div>
+  </div>
+  <div>
+    <h3 class="font-semibold mb-1">Cloud Services (AWS, Azure)</h3>
+    <div class="bg-gray-300 skill-bar-container w-full mb-4">
+      <div class="bg-blue-600 skill-bar" data-skill="65"></div>
+    </div>
+  </div>
+</div>
+<!-- Tech Stack Section -->
+<div class="max-w-6xl mx-auto px-4 py-16">
+  <h2 class="text-3xl font-bold mb-8 text-center">Tech Stack</h2>
+  <div class="grid grid-cols-3 sm:grid-cols-5 md:grid-cols-10 gap-6 justify-items-center items-center">
+
+    <!-- HTML5 -->
+    <i class="fab fa-html5 text-orange-500 text-4xl" title="HTML5"></i>
+
+    <!-- CSS3 -->
+    <i class="fab fa-css3-alt text-blue-500 text-4xl" title="CSS3"></i>
+
+    <!-- JavaScript -->
+    <i class="fab fa-js-square text-yellow-400 text-4xl" title="JavaScript"></i>
+
+    <!-- React -->
+    <i class="fab fa-react text-blue-400 text-4xl" title="React"></i>
+
+    <!-- Express (SVG icon) -->
+    <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/express/express-original.svg" alt="Express" class="h-10 w-10" title="Express">
+
+    <!-- MongoDB (SVG icon) -->
+    <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/mongodb/mongodb-original.svg" alt="MongoDB" class="h-10 w-10" title="MongoDB">
+
+    <!-- MySQL (SVG icon) -->
+    <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/mysql/mysql-original.svg" alt="MySQL" class="h-10 w-10" title="MySQL">
+
+    <!-- PostgreSQL (SVG icon) -->
+    <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/postgresql/postgresql-original.svg" alt="PostgreSQL" class="h-10 w-10" title="PostgreSQL">
+
+    <!-- Next.js (SVG icon) -->
+    <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/nextjs/nextjs-original.svg" alt="Next.js" class="h-10 w-10" title="Next.js">
+
+    <!-- Cloud Services (generic cloud icon) -->
+    <i class="fas fa-cloud text-gray-400 text-4xl" title="Cloud Services"></i>
+  </div>
+</div>
+
+<!-- Git & GitHub Section -->
+<div class="max-w-6xl mx-auto px-4 py-8">
+  <h2 class="text-3xl font-bold mb-6 text-center">Version Control</h2>
+  <div class="flex justify-center space-x-10 items-center">
+
+    <!-- Git (SVG) -->
+    <div class="flex flex-col items-center">
+      <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/git/git-original.svg" alt="Git" class="h-12 w-12" title="Git">
+      <span class="mt-2 text-sm font-medium">Git</span>
+    </div>
+
+    <!-- GitHub (Font Awesome) -->
+    <div class="flex flex-col items-center">
+      <i class="fab fa-github text-4xl text-gray-800 hover:text-black transition" title="GitHub"></i>
+      <span class="mt-2 text-sm font-medium">GitHub</span>
+    </div>
+
+  </div>
+</div>
+
+<!-- Font Awesome CDN (add once in your project, preferably before closing </body>) -->
+<script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+
+  <hr class="max-w-6xl mx-auto my-8 border-gray-300">
+
+  <!-- Experience Section -->
+  <section id="experience" class="py-16 max-w-6xl mx-auto px-4">
+    <h2 class="text-3xl font-bold mb-8 text-center">Experience</h2>
+    <div class="bg-white rounded shadow p-6 md:flex md:items-start md:space-x-8">
+      <div class="md:w-1/4 flex-shrink-0">
+        <img src="images/Nairobi Adventist Hospital.jpg" alt="Nairobi Adventist Hospital" class="rounded-lg mb-4 md:mb-0 w-full">
+      </div>
+      <div class="md:w-3/4">
+        <h3 class="font-bold text-2xl mb-1">ICT Intern</h3>
+        <p class="text-gray-700 font-semibold mb-2">Nairobi Adventist Hospital</p>
+        <p class="text-gray-500 mb-4">June 2025 - August 2025</p>
+        <ul class="list-disc list-inside text-gray-700 space-y-2">
+          <li>Assisted the IT team in network maintenance and troubleshooting.</li>
+          <li>Provided technical support to hospital staff for hardware and software issues.</li>
+          <li>Participated in the deployment and configuration of new IT equipment.</li>
+          <li>Gained hands-on experience with system administration and cybersecurity best practices in a healthcare environment.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <hr class="max-w-6xl mx-auto my-8 border-gray-300">
+
+  <!-- Portfolio Section -->
+  <section id="projects" class="py-16 max-w-6xl mx-auto px-4">
+    <h2 class="text-3xl font-bold mb-8 text-center">Projects</h2>
+    <div class="text-center py-10">
+      <p class="text-xl text-gray-700 mb-4">My exciting projects are currently under development!</p>
+      <p class="text-lg text-gray-600">Please check back soon for updates.</p>
+    </div>
+  </section>
+
+  <hr class="max-w-6xl mx-auto my-8 border-gray-300">
+
+  <!-- Testimonials Section -->
+  <section id="testimonials" class="bg-white py-16">
+    <div class="max-w-6xl mx-auto px-4">
+      <h2 class="text-3xl font-bold mb-8 text-center">What People Say</h2>
+      <div class="grid md:grid-cols-2 gap-8">
+        <div class="bg-gray-100 p-6 rounded-lg shadow-md">
+          <p class="text-gray-700 italic mb-4">"Brian is an exceptional developer who delivered a high-quality, scalable solution on a tight deadline. His communication and problem-solving skills are top-notch."</p>
+          <div class="flex items-center">
+            <img src="images/nah.jpg" alt="Client 1" class="w-12 h-12 rounded-full mr-4">
+            <div>
+              <p class="font-semibold">Abraham Michira</p>
+              <p class="text-sm text-gray-500">Fellow intern NAH.</p>
+            </div>
+          </div>
+        </div>
+        <div class="bg-gray-100 p-6 rounded-lg shadow-md">
+          <p class="text-gray-700 italic mb-4">"Working with Brian was a pleasure. He is incredibly knowledgeable and always went the extra mile to ensure our project was a success. Highly recommended!"</p>
+          <div class="flex items-center">
+            <img src="images/jkuat.jpg" alt="Client 2" class="w-12 h-12 rounded-full mr-4">
+            <div>
+              <p class="font-semibold">Elisha Duke</p>
+              <p class="text-sm text-gray-500">Classmate at JKUAT.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="max-w-6xl mx-auto my-8 border-gray-300">
+
+  <!-- Contact Section -->
+  <section id="contact" class="bg-blue-600 text-white py-16 px-4">
+    <h2 class="text-3xl font-bold mb-8 text-center">Contact Me</h2>
+    <div class="flex justify-center space-x-6 mt-8">
+  <!-- Email -->
+  <a href="mailto:aruahbrian.com" class="flex items-center space-x-2 bg-white text-blue-600 px-4 py-2 rounded hover:bg-gray-100 transition">
+    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24">
+      <path d="M12 13.065L0 6v12h24V6l-12 7.065zM12 11L0 4h24L12 11z"/>
+    </svg>
+    <span>Email</span>
+  </a>
+
+  <!-- Phone -->
+  <a href="tel:+254 714300672" class="flex items-center space-x-2 bg-white text-green-600 px-4 py-2 rounded hover:bg-gray-100 transition">
+    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24">
+      <path d="M6.62 10.79a15.053 15.053 0 006.59 6.59l2.2-2.2a1 1 0 011.11-.21 11.36 11.36 0 003.55.57 1 1 0 011 1v3.5a1 1 0 01-1 1A16.91 16.91 0 013 5a1 1 0 011-1h3.5a1 1 0 011 1c0 1.24.2 2.45.57 3.55a1 1 0 01-.21 1.11l-2.24 2.13z"/>
+    </svg>
+    <span>Phone</span>
+  </a>
+</div>
+    <p class="text-center mt-6">Feel free to reach out for collaborations, inquiries, or just to say hello!</p>
+    <div class="max-w-3xl mx-auto">
+      <form action="https://formspree.io/f/xrblbgjl" method="POST" class="grid grid-cols-1 gap-6">
+  <input 
+    type="text" 
+    name="name" 
+    placeholder="Your Name" 
+    required
+    class="p-3 rounded text-gray-800 focus:outline-none focus:ring-2 focus:ring-blue-400"
+  >
+  
+  <input 
+    type="email" 
+    name="email" 
+    placeholder="Your Email" 
+    required
+    class="p-3 rounded text-gray-800 focus:outline-none focus:ring-2 focus:ring-blue-400"
+  >
+  
+  <textarea 
+    name="message" 
+    placeholder="Your Message" 
+    required
+    class="p-3 rounded text-gray-800 focus:outline-none focus:ring-2 focus:ring-blue-400" 
+    rows="5"
+  ></textarea>
+  
+  <button 
+    type="submit" 
+    class="bg-white text-blue-600 font-bold py-3 rounded hover:bg-gray-100 transition"
+  >
+    Send Message
+  </button>
+</form>
+      <div class="flex justify-center space-x-6 mt-8">
+  <a href="https://www.facebook.com/vicmas.theman.1" target="_blank" class="text-gray-200 hover:text-white transition">
+    <!-- Facebook Icon -->
+    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
+      <path d="M22 12.07C22 6.49 17.52 2 12 2S2 6.49 2 12.07c0 5.03 3.66 9.2 8.44 9.88v-6.99h-2.54v-2.89h2.54V9.41c0-2.5 1.49-3.88 3.77-3.88 1.09 0 2.23.2 2.23.2v2.45h-1.25c-1.23 0-1.61.77-1.61 1.56v1.87h2.74l-.44 2.89h-2.3V21.95c4.78-.68 8.44-4.85 8.44-9.88z"/>
+    </svg>
+  </a>
+  <a href="https://www.instagram.com/_b.b.r.a.y.o_?igsh=aHF6ZzAxZjJ4Z3Jy" target="_blank" class="text-gray-200 hover:text-white transition">
+    <!-- Instagram Icon -->
+    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
+      <path d="M12 2.16c3.2 0 3.584.012 4.85.07 1.17.054 1.96.24 2.417.403a4.9 4.9 0 011.765 1.045 4.9 4.9 0 011.045 1.765c.163.456.35 1.247.403 2.417.058 1.267.07 1.65.07 4.85s-.012 3.584-.07 4.85c-.054 1.17-.24 1.96-.403 2.417a4.9 4.9 0 01-1.045 1.765 4.9 4.9 0 01-1.765 1.045c-.456.163-1.247.35-2.417.403-1.267.058-1.65.07-4.85.07s-3.584-.012-4.85-.07c-1.17-.054-1.96-.24-2.417-.403a4.9 4.9 0 01-1.765-1.045 4.9 4.9 0 01-1.045-1.765c-.163-.456-.35-1.247-.403-2.417-.058-1.267-.07-1.65-.07-4.85s.012-3.584.07-4.85c.054-1.17.24-1.96.403-2.417a4.9 4.9 0 011.045-1.765A4.9 4.9 0 014.733 2.63c.456-.163 1.247-.35 2.417-.403C8.416 2.172 8.8 2.16 12 2.16zm0-2.16C8.735 0 8.332.014 7.052.072 5.765.129 4.802.308 4.042.57 3.22.84 2.516 1.28 1.84 1.954c-.676.676-1.114 1.38-1.384 2.202-.262.76-.44 1.723-.497 3.01C0 8.332 0 8.735 0 12s.014 3.668.072 4.948c.057 1.287.235 2.25.497 3.01.27.822.708 1.526 1.384 2.202.676.676 1.38 1.114 2.202 1.384.76.262 1.723.44 3.01.497C8.332 24 8.735 24 12 24s3.668-.014 4.948-.072c1.287-.057 2.25-.235 3.01-.497.822-.27 1.526-.708 2.202-1.384.676-.676 1.114-1.38 1.384-2.202.262-.76.44-1.723.497-3.01.058-1.28.072-1.683.072-4.948s-.014-3.668-.072-4.948c-.057-1.287-.235-2.25-.497-3.01-.27-.822-.708-1.526-1.384-2.202C21.426 1.28 20.722.842 19.9.572c-.76-.262-1.723-.44-3.01-.497C15.668.014 15.265 0 12 0z"/>
+      <circle cx="12" cy="12" r="3.6"/>
+    </svg>
+  </a>
+  <a href="https://github.com/Brayo002-bot" target="_blank" class="text-gray-200 hover:text-white transition">
+    <!-- GitHub Icon -->
+    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
+      <path d="M12 0C5.373 0 0 5.373 0 12a12 12 0 008.207 11.386c.6.11.793-.26.793-.577v-2.022c-3.338.724-4.042-1.609-4.042-1.609-.546-1.385-1.334-1.753-1.334-1.753-1.09-.745.083-.729.083-.729 1.205.085 1.84 1.237 1.84 1.237 1.07 1.835 2.809 1.305 3.495.998.108-.776.418-1.305.762-1.605-2.665-.303-5.467-1.332-5.467-5.932 0-1.31.469-2.381 1.236-3.221-.124-.303-.536-1.523.117-3.176 0 0 1.008-.322 3.3 1.23a11.48 11.48 0 013.003-.404c1.018.005 2.043.138 3.003.404 2.29-1.552 3.296-1.23 3.296-1.23.655 1.653.243 2.873.12 3.176.77.84 1.234 1.911 1.234 3.221 0 4.61-2.807 5.625-5.479 5.921.43.372.823 1.103.823 2.222v3.293c0 .32.192.694.8.576A12 12 0 0024 12c0-6.627-5.373-12-12-12z"/>
+    </svg>
+  </a>
+  <a href="https://www.linkedin.com/in/brian-arua-3267462b3?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" target="_blank" class="text-gray-200 hover:text-white transition">
+    <!-- LinkedIn Icon -->
+    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
+      <path d="M4.98 3.5C4.98 5 3.95 6.04 2.5 6.04S0 5 0 3.5 1.03.96 2.5.96s2.48 1.04 2.48 2.54zM0 8.98h5V24H0V8.98zm7.5 0h4.79v2.06h.07c.67-1.26 2.3-2.59 4.73-2.59 5.06 0 6 3.34 6 7.69V24h-5V15.5c0-2.03-.04-4.65-2.84-4.65-2.84 0-3.27 2.21-3.27 4.5V24h-5V8.98z"/>
+    </svg>
+  </a>
+  <a href="https://x.com/brayo_vicmas?t=QgHGgjlXWeKz6goW1is8lw&s=08" target="_blank" class="text-gray-200 hover:text-white transition">
+    <!-- Twitter Icon -->
+    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
+      <path d="M24 4.56c-.89.39-1.85.65-2.85.77a4.96 4.96 0 002.17-2.72 9.86 9.86 0 01-3.13 1.2 4.92 4.92 0 00-8.38 4.48A13.96 13.96 0 011.67 3.15a4.92 4.92 0 001.52 6.57c-.79-.03-1.54-.24-2.19-.61v.06a4.92 4.92 0 003.95 4.83 4.93 4.93 0 01-2.18.08 4.93 4.93 0 004.6 3.42A9.86 9.86 0 010 19.54 13.93 13.93 0 007.55 21c9.05 0 14-7.5 14-14 0-.21 0-.42-.02-.63A10.02 10.02 0 0024 4.56z"/>
+    </svg>
+  </a>
+  <a href="https://wa.me/0714300672" target="_blank" class="text-gray-200 hover:text-white transition">
+    <!-- WhatsApp Icon -->
+    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
+      <path d="M20.52 3.48A11.94 11.94 0 0012 0C5.373 0 0 5.373 0 12a11.92 11.92 0 001.653 6.07L0 24l6.15-1.616A11.94 11.94 0 0012 24c6.627 0 12-5.373 12-12 0-3.19-1.24-6.18-3.48-8.52zm-8.52 18a9.93 9.93 0 01-5.24-1.54l-.38-.23-3.65.963.978-3.556-.246-.37A9.937 9.937 0 012 12c0-5.523 4.477-10 10-10s10 4.477 10 10-4.477 10-10 10zm5.527-7.69c-.297-.148-1.758-.867-2.03-.967-.272-.099-.47-.148-.667.149-.197.296-.767.967-.94 1.165-.173.197-.347.222-.644.074-.297-.148-1.253-.461-2.387-1.475-.882-.788-1.477-1.761-1.65-2.058-.173-.296-.018-.456.13-.604.134-.134.297-.347.446-.52.15-.173.198-.296.297-.495.099-.197.05-.37-.025-.518-.074-.148-.667-1.611-.914-2.207-.24-.579-.484-.5-.667-.51-.173-.008-.37-.01-.567-.01s-.518.074-.792.37c-.272.296-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.148.197 2.096 3.2 5.077 4.487.71.306 1.262.489 1.694.625.712.227 1.36.195 1.872.118.571-.085 1.758-.718 2.006-1.41.248-.691.248-1.284.173-1.41-.074-.123-.272-.197-.567-.345z"/>
+    </svg>
+  </a>
+</div>
+    </div>
+  </section>
+  
+  <footer class="bg-gray-800 text-white text-center p-4">
+    <p>&copy; 2025 Aruah Brian Odhiambo. All Rights Reserved.</p>
+  </footer>
+
+  <script>
+    // CV Download Functionality
+const { jsPDF } = window.jspdf;
+
+document.getElementById('downloadCV').addEventListener('click', () => {
+  const doc = new jsPDF({
+    orientation: "portrait",
+    unit: "mm",
+    format: "a4"
+  });
+
+  // Define color palette for consistency and professionalism
+  const primaryColor = '#1a202c'; // Dark gray/black for main text
+  const accentColor = '#2b6cb0'; // A deep blue for accents and headings
+  const lightBgColor = '#f7fafc'; // Light background for contrast
+  const sectionHeaderBg = '#edf2f7'; // Slightly darker light gray for section headers
+
+  // --- HEADER SECTION ---
+  doc.setFillColor(accentColor);
+  doc.rect(0, 0, 210, 35, 'F'); // Background band for header
+  doc.setTextColor(255, 255, 255); // White text for header
+  doc.setFont('helvetica', 'bold');
+  doc.setFontSize(28);
+  doc.text("Brian Odhiambo", 15, 18); // Name
+  doc.setFontSize(14);
+  doc.text("Full Stack Developer | BBIT Student @ JKUAT", 15, 26); // Title/tagline
+
+  // --- CONTACT INFORMATION SECTION ---
+  let yOffset = 45; // Starting Y position after header
+  
+  doc.setFillColor(sectionHeaderBg);
+  doc.rect(0, yOffset - 5, 210, 10, 'F'); // Light background for section title band
+  doc.setTextColor(primaryColor); // Dark text for section title
+  doc.setFont('helvetica', 'bold');
+  doc.setFontSize(15);
+  doc.text("Contact Information", 15, yOffset + 2);
+
+  yOffset += 15; // Move down for content
+
+  doc.setTextColor(primaryColor);
+  doc.setFont('helvetica', 'normal');
+  doc.setFontSize(11);
+  doc.text("📧 aruahbrian@gmail.com", 15, yOffset);
+  doc.text("📱 +254 714 300 672", 15, yOffset + 6);
+  doc.text("🔗 linkedin.com/in/brianodhiambo", 100, yOffset); // Adjusted X for second column
+  doc.text("💻 github.com/brian-odhiambo", 100, yOffset + 6); // Adjusted X for second column
+
+  yOffset += 15;
+
+  // --- SUMMARY SECTION ---
+  doc.setFillColor(sectionHeaderBg);
+  doc.rect(0, yOffset - 5, 210, 10, 'F');
+  doc.setTextColor(primaryColor);
+  doc.setFont('helvetica', 'bold');
+  doc.setFontSize(15);
+  doc.text("Summary", 15, yOffset + 2);
+
+  yOffset += 15;
+
+  doc.setTextColor(primaryColor);
+  doc.setFont('helvetica', 'normal');
+  doc.setFontSize(11);
+  const summaryText =
+    "A highly motivated and results-driven Full Stack Developer and current BBIT student at Jomo Kenyatta University of Agriculture & Technology (JKUAT). Possessing hands-on experience in building scalable, secure, and user-friendly web applications from conception to deployment. Eager to leverage technical expertise and problem-solving skills to contribute to innovative projects and drive organizational success.";
+  const summaryLines = doc.splitTextToSize(summaryText, 180); // Wrap text
+  doc.text(summaryLines, 15, yOffset);
+
+  yOffset += summaryLines.length * 5 + 10; // Adjust Y based on lines of text
+
+  // --- TECHNICAL SKILLS SECTION ---
+  doc.setFillColor(sectionHeaderBg);
+  doc.rect(0, yOffset - 5, 210, 10, 'F');
+  doc.setTextColor(primaryColor);
+  doc.setFont('helvetica', 'bold');
+  doc.setFontSize(15);
+  doc.text("Technical Skills", 15, yOffset + 2);
+
+  yOffset += 15;
+
+  doc.setTextColor(primaryColor);
+  doc.setFont('helvetica', 'normal');
+  doc.setFontSize(11);
+
+  // Categorized skills for better readability
+  const skillCategories = {
+    "Languages": ["JavaScript (ES6+)", "HTML5", "CSS3", "Python"],
+    "Frameworks & Libraries": ["React", "Next.js", "Node.js", "Express.js", "Tailwind CSS"],
+    "Databases": ["MongoDB", "PostgreSQL", "MySQL", "Firebase"],
+    "Tools & Platforms": ["Git", "GitHub", "Docker", "AWS (EC2, S3)", "Google Cloud Platform", "VS Code"],
+    "Concepts": ["RESTful APIs", "Responsive Design", "Authentication & Authorization", "Agile Methodologies"]
+  };
+
+  for (const category in skillCategories) {
+    doc.setFont('helvetica', 'bold');
+    doc.text(`${category}:`, 15, yOffset);
+    doc.setFont('helvetica', 'normal');
+    doc.text(skillCategories[category].join(", "), 55, yOffset); // Align skills after category
+    yOffset += 6;
+  }
+
+  yOffset += 10;
+
+  // --- EXPERIENCE SECTION ---
+  doc.setFillColor(sectionHeaderBg);
+  doc.rect(0, yOffset - 5, 210, 10, 'F');
+  doc.setTextColor(primaryColor);
+  doc.setFont('helvetica', 'bold');
+  doc.setFontSize(15);
+  doc.text("Experience", 15, yOffset + 2);
+
+  yOffset += 15;
+
+  // Experience 1: ICT Intern
+  doc.setTextColor(primaryColor);
+  doc.setFont('helvetica', 'bold');
+  doc.setFontSize(12);
+  doc.text("ICT Intern | Nairobi Adventist Hospital", 15, yOffset);
+  doc.setFont('helvetica', 'normal');
+  doc.setFontSize(10);
+  doc.text("Nairobi, Kenya | June 2025 - August 2025", 15, yOffset + 5);
+  const exp1Details =
+    "• Assisted the IT department in daily network maintenance, hardware diagnostics, and software troubleshooting, ensuring seamless hospital operations.\n" +
+    "• Provided direct technical support to over 100 hospital staff members, resolving a wide range of IT-related issues promptly and efficiently.\n" +
+    "• Participated actively in the deployment, configuration, and inventory management of new workstations, servers, and networking equipment.\n" +
+    "• Gained practical experience in applying cybersecurity best practices and data privacy protocols within a sensitive healthcare environment.\n" +
+    "• Collaborated with senior IT personnel to implement minor system upgrades and document network infrastructure.";
+  const exp1Lines = doc.splitTextToSize(exp1Details, 180);
+  doc.text(exp1Lines, 20, yOffset + 12); // Indent bullet points
+
+  yOffset += exp1Lines.length * 4.5 + 15; // Adjust Y based on lines
+
+  // Experience 2: Junior Software Developer (Dummy)
+  doc.setFont('helvetica', 'bold');
+  doc.setFontSize(12);
+  doc.text("Junior Software Developer | Innovate Solutions Ltd.", 15, yOffset);
+  doc.setFont('helvetica', 'normal');
+  doc.setFontSize(10);
+  doc.text("Remote | January 2023 - May 2025", 15, yOffset + 5);
+  const exp2Details =
+    "• Developed and maintained scalable web applications using React, Node.js, and MongoDB, contributing to a 15% improvement in application performance.\n" +
+    "• Implemented RESTful APIs and integrated third-party services, enhancing system functionality and interoperability.\n" +
+    "• Collaborated with cross-functional teams (designers, product managers) using Agile methodologies to deliver features on schedule.\n" +
+    "• Conducted rigorous unit and integration testing to ensure code quality and system reliability.\n" +
+    "• Contributed to code reviews, identifying areas for optimization and adherence to coding standards.";
+  const exp2Lines = doc.splitTextToSize(exp2Details, 180);
+  doc.text(exp2Lines, 20, yOffset + 12);
+
+  yOffset += exp2Lines.length * 4.5 + 15;
+
+  // --- PROJECTS SECTION ---
+  doc.setFillColor(sectionHeaderBg);
+  doc.rect(0, yOffset - 5, 210, 10, 'F');
+  doc.setTextColor(primaryColor);
+  doc.setFont('helvetica', 'bold');
+  doc.setFontSize(15);
+  doc.text("Key Projects", 15, yOffset + 2);
+
+  yOffset += 15;
+
+  doc.setTextColor(primaryColor);
+  doc.setFont('helvetica', 'normal');
+  doc.setFontSize(11);
+
+  // Project 1
+  doc.setFont('helvetica', 'bold');
+  doc.text("LipaSmart — Rental Payment Automation System", 15, yOffset);
+  doc.setFont('helvetica', 'normal');
+  const proj1Details =
+    "• Developed a full-stack platform for automating rental payments, featuring tenant and landlord dashboards.\n" +
+    "• Implemented secure payment gateway integrations and automated invoicing.\n" +
+    "• Technologies: React, Node.js, Express, MongoDB.";
+  const proj1Lines = doc.splitTextToSize(proj1Details, 180);
+  doc.text(proj1Lines, 20, yOffset + 6); // Indent bullet points
+
+  yOffset += proj1Lines.length * 4.5 + 10;
+
+  // Project 2
+  doc.setFont('helvetica', 'bold');
+  doc.text("Ignite SACCO — Savings & Loan Management Platform", 15, yOffset);
+  doc.setFont('helvetica', 'normal');
+  const proj2Details =
+    "• Designed and built a comprehensive system for managing SACCO operations, including member registration, savings, and loan processing.\n" +
+    "• Features robust reporting tools and an intuitive admin panel.\n" +
+    "• Technologies: Vue.js, Django, PostgreSQL.";
+  const proj2Lines = doc.splitTextToSize(proj2Details, 180);
+  doc.text(proj2Lines, 20, yOffset + 6);
+
+  yOffset += proj2Lines.length * 4.5 + 10;
+
+  // Project 3
+  doc.setFont('helvetica', 'bold');
+  doc.text("SmartTicketKe — Bus Booking & Ticketing Platform", 15, yOffset);
+  doc.setFont('helvetica', 'normal');
+  const proj3Details =
+    "• Created an online platform for booking bus tickets with real-time seat availability and secure online payments.\n" +
+    "• Includes user authentication, ticket generation, and a backend for route management.\n" +
+    "• Technologies: Next.js, Firebase, Stripe API.";
+  const proj3Lines = doc.splitTextToSize(proj3Details, 180);
+  doc.text(proj3Lines, 20, yOffset + 6);
+
+  yOffset += proj3Lines.length * 4.5 + 10;
+
+  // --- EDUCATION SECTION ---
+  doc.setFillColor(sectionHeaderBg);
+  doc.rect(0, yOffset - 5, 210, 10, 'F');
+  doc.setTextColor(primaryColor);
+  doc.setFont('helvetica', 'bold');
+  doc.setFontSize(15);
+  doc.text("Education", 15, yOffset + 2);
+
+  yOffset += 15;
+
+  doc.setTextColor(primaryColor);
+  doc.setFont('helvetica', 'normal');
+  doc.setFontSize(11);
+  doc.text("Bachelor of Business Information Technology (BBIT)", 15, yOffset);
+  doc.text("Jomo Kenyatta University of Agriculture & Technology (JKUAT)", 15, yOffset + 6);
+  doc.text("Expected Graduation: 2026", 15, yOffset + 12);
+
+  yOffset += 20;
+
+  // --- CERTIFICATIONS SECTION ---
+  doc.setFillColor(sectionHeaderBg);
+  doc.rect(0, yOffset - 5, 210, 10, 'F');
+  doc.setTextColor(primaryColor);
+  doc.setFont('helvetica', 'bold');
+  doc.setFontSize(15);
+  doc.text("Certifications", 15, yOffset + 2);
+
+  yOffset += 15;
+
+  doc.setTextColor(primaryColor);
+  doc.setFont('helvetica', 'normal');
+  doc.setFontSize(11);
+  doc.text("• Full-Stack Web Development Specialization — Coursera (Issued: 2024)", 15, yOffset);
+  doc.text("• Modern React with Redux — Udemy (Issued: 2023)", 15, yOffset + 6);
+  doc.text("• Cloud Computing Foundations — AWS Academy (Issued: 2023)", 15, yOffset + 12);
+
+  yOffset += 20;
+
+  // --- LANGUAGES SECTION ---
+  doc.setFillColor(sectionHeaderBg);
+  doc.rect(0, yOffset - 5, 210, 10, 'F');
+  doc.setTextColor(primaryColor);
+  doc.setFont('helvetica', 'bold');
+  doc.setFontSize(15);
+  doc.text("Languages", 15, yOffset + 2);
+
+  yOffset += 15;
+
+  doc.setTextColor(primaryColor);
+  doc.setFont('helvetica', 'normal');
+  doc.setFontSize(11);
+  doc.text("• English — Fluent (Native Speaker)", 15, yOffset);
+  doc.text("• Swahili — Fluent (Native Speaker)", 15, yOffset + 6);
+
+  // Save PDF
+  doc.save("Brian_Odhiambo_Professional_CV.pdf");
+});
+
+    // Animate skill bars on scroll
+    const skillBars = document.querySelectorAll('.skill-bar');
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if(entry.isIntersecting){
+          entry.target.style.width = entry.target.getAttribute('data-skill') + '%';
+        }
+      });
+    }, { threshold: 0.5 });
+
+    skillBars.forEach(bar => observer.observe(bar));
+
+    // Mobile menu toggle
+    const mobileMenuButton = document.getElementById('mobileMenuButton');
+    const mobileMenu = document.getElementById('mobileMenu');
+
+    mobileMenuButton.addEventListener('click', () => {
+      mobileMenu.classList.toggle('active');
+    });
+
+    // Close mobile menu when a link is clicked
+    mobileMenu.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        mobileMenu.classList.remove('active');
+      });
+    });
+    // script.js
+document.addEventListener("DOMContentLoaded", function () {
+  const form = document.querySelector("form");
+  
+  form.addEventListener("submit", async function (event) {
+    event.preventDefault(); // Stop default form submission
+
+    const formData = new FormData(form);
+
+    try {
+      const response = await fetch(form.action, {
+        method: form.method,
+        body: formData,
+        headers: {
+          'Accept': 'application/json'
+        }
+      });
+
+      if (response.ok) {
+        alert("✅ Message sent successfully!");
+        form.reset();
+      } else {
+        alert("❌ Oops! Something went wrong. Please try again.");
+      }
+    } catch (error) {
+      alert("⚠️ Error sending message. Please check your internet connection.");
+    }
+  });
+});
+
+    // Floating particles animation
+    const container = document.getElementById('particles-container');
+    const colors = ['#3b82f6', '#f472b6', '#facc15', '#34d399', '#f87171'];
+    const shapes = ['circle', 'rect', 'polygon'];
+    const numParticles = 15;
+    const particles = [];
+
+    for (let i = 0; i < numParticles; i++) {
+      const shapeType = shapes[Math.floor(Math.random() * shapes.length)];
+      const size = 20 + Math.random() * 30;
+      const color = colors[Math.floor(Math.random() * colors.length)];
+      const x = Math.random() * window.innerWidth;
+      const y = Math.random() * window.innerHeight;
+      const dx = (Math.random() - 0.5) * 0.5;
+      const dy = (Math.random() - 0.5) * 0.5;
+
+      let svg;
+      if (shapeType === 'circle') {
+        svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+        svg.setAttribute("width", size);
+        svg.setAttribute("height", size);
+        svg.innerHTML = `<circle cx="${size/2}" cy="${size/2}" r="${size/2}" fill="${color}" opacity="0.3"/>`;
+      } else if (shapeType === 'rect') {
+        svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+        svg.setAttribute("width", size);
+        svg.setAttribute("height", size);
+        svg.innerHTML = `<rect width="${size}" height="${size}" fill="${color}" opacity="0.3"/>`;
+      } else if (shapeType === 'polygon') {
+        svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+        svg.setAttribute("width", size);
+        svg.setAttribute("height", size);
+        svg.innerHTML = `<polygon points="${size/2},0 ${size},${size} 0,${size}" fill="${color}" opacity="0.3"/>`;
+      }
+
+      svg.style.position = 'absolute';
+      svg.style.left = x + 'px';
+      svg.style.top = y + 'px';
+      container.appendChild(svg);
+
+      particles.push({svg, x, y, dx, dy, size});
+    }
+
+    function animateParticles() {
+      for (let p of particles) {
+        p.x += p.dx;
+        p.y += p.dy;
+
+        if (p.x < -p.size) p.x = window.innerWidth;
+        if (p.x > window.innerWidth) p.x = -p.size;
+        if (p.y < -p.size) p.y = window.innerHeight;
+        if (p.y > window.innerHeight) p.y = -p.size;
+
+        p.svg.style.transform = `translate(${p.x}px, ${p.y}px)`;
+      }
+      requestAnimationFrame(animateParticles);
+    }
+    animateParticles();
+  </script>
+
+</body>
+</html>
