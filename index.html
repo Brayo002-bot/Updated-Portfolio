@@ -86,13 +86,53 @@
   </nav>
 
   <!-- Hero Section -->
-  <section class="bg-blue-600 text-white min-h-screen flex flex-col justify-center items-center text-center px-4 relative z-10">
-    <img src="images/owner1.jpeg" alt="Profile Image" class="w-40 h-40 rounded-full border-4 border-white mb-4">
-    <h1 class="text-4xl font-bold mb-2">Hi, I'm Aruah Brian Odhiambo</h1>
-    <p class="text-xl mb-4">Full Stack Developer | Tech Enthusiast | Problem Solver</p>
-    <p class="max-w-xl mx-auto text-lg mb-6">I specialize in creating robust and scalable web applications from the ground up, with a focus on modern technologies and user-centric design.</p>
-    <button id="downloadCV" class="bg-white text-blue-600 font-bold px-6 py-3 rounded hover:bg-gray-100 transition">Download CV</button>
-  </section>
+<section class="bg-gradient-to-br from-blue-600 via-blue-500 to-indigo-600 text-white min-h-screen flex flex-col justify-center items-center text-center px-4 relative z-10 overflow-hidden">
+
+  <!-- Background Decorative Circles -->
+  <div class="absolute top-0 left-0 w-64 h-64 bg-white/10 rounded-full blur-3xl -z-10"></div>
+  <div class="absolute bottom-0 right-0 w-72 h-72 bg-white/10 rounded-full blur-3xl -z-10"></div>
+
+  <!-- Profile Image -->
+  <img src="images/owner1.jpeg" alt="Profile Image" 
+       class="w-40 h-40 rounded-full border-4 border-white shadow-lg mb-4 hover:scale-105 transition-transform duration-300">
+
+  <!-- Name -->
+  <h1 class="text-4xl sm:text-5xl font-extrabold mb-2 animate-fadeIn">Hi, I'm <span class="text-yellow-300">Aruah Brian Odhiambo</span></h1>
+
+  <!-- Tagline -->
+  <p class="text-lg sm:text-xl mb-4 opacity-90 animate-fadeIn delay-100">
+    💻 Full Stack Developer | 🚀 Tech Enthusiast | 🧩 Problem Solver
+  </p>
+
+  <!-- Short Intro -->
+  <p class="max-w-xl mx-auto text-base sm:text-lg mb-6 opacity-80 leading-relaxed animate-fadeIn delay-200">
+    I specialize in creating robust, scalable, and visually stunning web applications with modern tech stacks and a focus on delivering an amazing user experience.
+  </p>
+
+  <!-- Action Buttons -->
+  <div class="flex gap-4 animate-fadeIn delay-300">
+    <button id="downloadCV" 
+            class="bg-white text-blue-600 font-bold px-6 py-3 rounded-lg shadow-md hover:shadow-lg hover:bg-gray-100 transition">
+      📄 Download CV
+    </button>
+    <a href="#projects" 
+       class="bg-yellow-400 text-gray-900 font-bold px-6 py-3 rounded-lg shadow-md hover:shadow-lg hover:bg-yellow-300 transition">
+      🔍 View My Work
+    </a>
+  </div>
+</section>
+
+<!-- Animations -->
+<style>
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.animate-fadeIn { animation: fadeIn 0.8s ease-out forwards; }
+.animate-fadeIn.delay-100 { animation-delay: 0.1s; }
+.animate-fadeIn.delay-200 { animation-delay: 0.2s; }
+.animate-fadeIn.delay-300 { animation-delay: 0.3s; }
+</style>
 
   <!-- About Section -->
 <section id="about" class="max-w-6xl mx-auto px-4 py-16">
@@ -178,28 +218,33 @@
     <i class="fab fa-js-square text-yellow-400 text-4xl" title="JavaScript"></i>
 
     <!-- React -->
-    <i class="fab fa-react text-blue-400 text-4xl" title="React"></i>
+    <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/react/react-original.svg" alt="React" class="h-10 w-10" title="React">
 
-    <!-- Express (SVG icon) -->
+    <!-- Vite -->
+    <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/vite/vite-original.svg" alt="Vite" class="h-10 w-10" title="Vite">
+
+    <!-- Vue.js -->
+    <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/vuejs/vuejs-original.svg" alt="Vue.js" class="h-10 w-10" title="Vue.js">
+
+    <!-- Express -->
     <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/express/express-original.svg" alt="Express" class="h-10 w-10" title="Express">
 
-    <!-- MongoDB (SVG icon) -->
+    <!-- MongoDB -->
     <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/mongodb/mongodb-original.svg" alt="MongoDB" class="h-10 w-10" title="MongoDB">
 
-    <!-- MySQL (SVG icon) -->
+    <!-- MySQL -->
     <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/mysql/mysql-original.svg" alt="MySQL" class="h-10 w-10" title="MySQL">
 
-    <!-- PostgreSQL (SVG icon) -->
+    <!-- PostgreSQL -->
     <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/postgresql/postgresql-original.svg" alt="PostgreSQL" class="h-10 w-10" title="PostgreSQL">
 
-    <!-- Next.js (SVG icon) -->
+    <!-- Next.js -->
     <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/nextjs/nextjs-original.svg" alt="Next.js" class="h-10 w-10" title="Next.js">
 
-    <!-- Cloud Services (generic cloud icon) -->
+    <!-- Cloud Services -->
     <i class="fas fa-cloud text-gray-400 text-4xl" title="Cloud Services"></i>
   </div>
 </div>
-
 <!-- Git & GitHub Section -->
 <div class="max-w-6xl mx-auto px-4 py-8">
   <h2 class="text-3xl font-bold mb-6 text-center">Version Control</h2>
@@ -679,9 +724,16 @@ document.getElementById('downloadCV').addEventListener('click', () => {
     // script.js
 document.addEventListener("DOMContentLoaded", function () {
   const form = document.querySelector("form");
+  const messageBox = document.createElement("div");
   
+  messageBox.className = "mt-4 p-3 rounded text-white hidden";
+  form.parentNode.appendChild(messageBox);
+
   form.addEventListener("submit", async function (event) {
-    event.preventDefault(); // Stop default form submission
+    event.preventDefault();
+
+    // Hide previous messages
+    messageBox.classList.add("hidden");
 
     const formData = new FormData(form);
 
@@ -689,23 +741,25 @@ document.addEventListener("DOMContentLoaded", function () {
       const response = await fetch(form.action, {
         method: form.method,
         body: formData,
-        headers: {
-          'Accept': 'application/json'
-        }
+        headers: { 'Accept': 'application/json' }
       });
 
       if (response.ok) {
-        alert("✅ Message sent successfully!");
+        messageBox.textContent = "✅ Message sent successfully!";
+        messageBox.className = "mt-4 p-3 rounded bg-green-500 text-white";
         form.reset();
       } else {
-        alert("❌ Oops! Something went wrong. Please try again.");
+        messageBox.textContent = "❌ Oops! Something went wrong. Please try again.";
+        messageBox.className = "mt-4 p-3 rounded bg-red-500 text-white";
       }
     } catch (error) {
-      alert("⚠️ Error sending message. Please check your internet connection.");
+      messageBox.textContent = "⚠️ Network error. Please check your internet connection.";
+      messageBox.className = "mt-4 p-3 rounded bg-yellow-500 text-black";
     }
+
+    messageBox.classList.remove("hidden");
   });
 });
-
     // Floating particles animation
     const container = document.getElementById('particles-container');
     const colors = ['#3b82f6', '#f472b6', '#facc15', '#34d399', '#f87171'];
