@@ -1,5 +1,5 @@
 # Aruah Brian Odhiambo - Portfolio
-To view this portfolio visit: https://aruahbrian.netlify.app/
+To view this portfolio visit: https://brianaruah.netlify.app/
 ---
 
 ### Welcome to my professional portfolio!
